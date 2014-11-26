@@ -58,13 +58,13 @@
   \* name: と passwd: の前方の __(アンダーバー) は 半角スペース。  
   (users からの開始位置を 表現したかったのですが、上手くかけなかったので。)   
   
-1. install coreos
+1. install coreos  
    sudo coreos-install -d /dev/sda -C stable -c cloud-config
    
-1. enject iso image (or umount cdrom)
+1. enject iso image (or umount cdrom)  
    sudo eject
 
-1. reboot and login core user using mypasswd
+1. reboot and login core user using mypasswd  
    sudo reboot
    
    (login)  

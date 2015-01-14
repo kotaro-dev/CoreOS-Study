@@ -29,13 +29,11 @@
      
 1. create cloud-config.
    まず、平文でpassword file を作成。  
-
-   vi mypasswd  
-   \--------------------  
+```
+   sudo vim mypasswd
+   [mypasswd]
    Core0s  
-   \--------------------  
-   
-  \* [-----] 間でedit 内容を区分けしています。  
+```   
    今回は password を Core0s とします。  
    
    次に、-1 (MD5-based password algorithm) で暗号化。  
@@ -46,18 +44,15 @@
   rm mypasswd
   
   最後に、cloud-config を編集。  
-  vi cloud-config  
-  \--------------------  
-   \#cloud-config  
+```  
+  sudo vim cloud-config
+  [cloud-config]
+   #cloud-config  
    
-    users:  
-    _ \- name: core  
-    __   passwd: {hashed mypasswd}  
-  \--------------------   
-  
-  \* name: と passwd: の前方の __(アンダーバー) は 半角スペース。  
-  (users からの開始位置を 表現したかったのですが、上手くかけなかったので。)   
-  
+  users:  
+    - name: core
+      passwd: {hashed mypasswd}
+```  
 1. install coreos  
    sudo coreos-install -d /dev/sda -C stable -c cloud-config
    
